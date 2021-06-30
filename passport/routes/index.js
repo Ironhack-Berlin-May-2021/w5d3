@@ -1,9 +1,5 @@
 const router = require("express").Router();
 
-/* GET home page */
-router.get("/", (req, res, next) => {
-  res.render("index");
-});
 
 // create a middleware to check if the user is logged in
 const loginCheck = () => {
@@ -22,8 +18,9 @@ const loginCheck = () => {
 
 /* GET home page */
 router.get("/", (req, res, next) => {
-  console.log(req.user);
-  res.render("index", { user: req.user });
+  console.log('hello');
+  const currentUser = req.user;
+  res.render("index", { user: currentUser });
 });
 
 router.get('/profile', loginCheck(), (req, res, next) => {
